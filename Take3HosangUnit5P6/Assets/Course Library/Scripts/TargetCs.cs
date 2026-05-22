@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetCs : MonoBehaviour
 {
     private Rigidbody targetRb;
-   public float minSpeed = 12;
+    public float minSpeed = 12;
     public float maxSpeed = 16;
     private float maxTorque = 10;
     private float xRange = 4;
@@ -14,14 +14,18 @@ public class TargetCs : MonoBehaviour
     {
         targetRb = GetComponent<Rigidbody>();
 
-        targetRb.AddForce(RandomForce() ForceMode.Impulse);
+        targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
+    }
+    Vector3 RandomForce
+    {  
+        return Vector3.Up * Random.Range(minSpeed, maxSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
